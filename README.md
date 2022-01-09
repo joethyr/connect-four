@@ -16,6 +16,6 @@ The program runs a game of Connect Four on the command line where the player pla
 code blocks for commands
 ```
 
-## Curriculum
+## Sources
 
 [The Odin Project](https://www.theodinproject.com/)
