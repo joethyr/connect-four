@@ -1,20 +1,19 @@
 class Board
-  attr_reader :positions
+  attr_reader :coordinates
 
   def initialize
-    @positions = build_positions
+    @coordinates = Array.new(7) { " " }
   end
 
-  def build_positions(arr = [])
-    6.times do |clmn|
-      7.times do |row|
-        arr << [clmn, row]
-      end
+  def display_board
+
+    row_sep = "\n--------------"
+    row = coordinates.map do |x|
+      "#{x}|"
     end
-    arr
+    row.join('').concat(row_sep)
   end
 end
 
 
 joe = Board.new
-p joe.positions
