@@ -1,21 +1,24 @@
 class Board
-  attr_reader :coordinates
+  attr_accessor :grid
 
   def initialize
-    @coordinates = Array.new(6) { Array.new(7) { " " } }
+    @grid = Array.new(6) { Array.new(7) { '-' } }
   end
 
   def display_board
-    row_sep = "\n--------------\n"
-
-    row = coordinates.map do |i|
-      cell = i.map do |e|
-        "#{e}|"
-      end
-      cell.join('').concat(row_sep)
+    @grid.each do |row|
+      puts row.join(' ')
     end
-    row.join('')
+    puts [*0..6].join(' ')
+  end
+
+  def space_available?(input)
+    return true if grid[0][input] == '-'
+
+    false
   end
 end
 
 joe = Board.new
+puts joe.grid[0][1]
+puts joe.grid[1][2]
