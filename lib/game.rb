@@ -22,20 +22,16 @@ class Game
   def player_turn
     puts "player, please enter the number of the column you will occupy:\n>"
     input = gets.chomp.to_i
-    return input if turn_valid?(input)
-
-    turn_invalid
+    turn_valid?(input)
   end
 
   def turn_valid?(input)
-    [*0..6].include?(input) && board.space_available?(input)
-  end
+    return if [*0..6].include?(input) && board.space_available?(input)
 
-  def turn_invalid
-    "input invalid. Try again."
+    puts "input invalid. Try again."
     player_turn
   end
 end
 
-# test = Game.new(Player.new('red'), Player.new('yellow'))
-
+test = Game.new(Player.new('red'), Player.new('yellow'))
+test.player_turn
