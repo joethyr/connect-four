@@ -19,14 +19,21 @@ class Game
   #   switch players
   # end
 
-  def player_turn(player)
-    puts "#{player}, please enter the number of the column you will occupy:\n>"
+  def player_turn
+    puts "player, please enter the number of the column you will occupy:\n>"
     input = gets.chomp.to_i
-    turn_valid?(input)
+    return input if turn_valid?(input)
+
+    turn_invalid
   end
 
   def turn_valid?(input)
-    [*0..6].include?(input)
+    [*0..6].include?(input) && board.space_available?(input)
+  end
+
+  def turn_invalid
+    "input invalid. Try again."
+    player_turn
   end
 end
 
