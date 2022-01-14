@@ -13,8 +13,9 @@ class Game
   end
 
   # def play(player)
-  #   player.choices << player_turn(player)
+  #   player_turn(player)
   #   update grid
+  #   update player choices with grid[i][e]
   #   check if won/lost/tie
   #   switch players
   # end
@@ -32,9 +33,11 @@ class Game
     player_turn
   end
 
-
-
-
+  def player_won?
+    # code that checks if the player has won
+    if board.check_grid == true
+    puts "player has won!"
+  end
 end
 
 # test = Game.new(Player.new('red'), Player.new('yellow'))

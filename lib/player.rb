@@ -1,8 +1,8 @@
 class Player
-attr_reader :color, :choices
+attr_reader :symbol, :choices
 
-  def initialize(color)
-    @color = color
+  def initialize(symbol)
+    @symbol = symbol
     @choices = []
   end
 end

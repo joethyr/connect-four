@@ -23,7 +23,15 @@ class Board
     row -= 1 until grid[row][input] == '-'
 
     grid[row][input] = 'o'
+
   end
+
+  def check_grid
+
+  end
+
+  def check_vertical(row, column)
+
 end
 
 joe = Board.new
