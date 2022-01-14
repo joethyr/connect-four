@@ -17,8 +17,15 @@ class Board
 
     false
   end
+
+  def update_grid(input)
+    row = 5
+    row -= 1 until grid[row][input] == '-'
+
+    grid[row][input] = 'o'
+  end
 end
 
 joe = Board.new
-puts joe.grid[0][1]
-puts joe.grid[1][2]
+joe.update_grid(1)
+joe.display_board

@@ -31,7 +31,10 @@ class Game
     puts "input invalid. Try again."
     player_turn
   end
+
+
+
+
 end
 
-test = Game.new(Player.new('red'), Player.new('yellow'))
-test.player_turn
+# test = Game.new(Player.new('red'), Player.new('yellow'))
