@@ -3,32 +3,31 @@ require_relative 'board'
 
 class Game
   # attr_reader
-  attr_accessor :board, :player1, :player2, :game_over, :current_player
+  attr_accessor :board, :player1, :player2, :game_over, :active_player
 
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
     @board = Board.new
     @game_over = false
-    @current_player = player1
-    play
+    @active_player = player1
   end
 
   def play
     until game_over == true
-      input = player_turn(current_player)
-      board.update_grid(input, current_player)
+      input = player_turn(active_player)
+      board.update_grid(input, active_player)
       board.display_board
-      switch_active_player(current_player)
+      switch_active_player(active_player)
       # player_won?(player)
     end
   end
 
-  def switch_active_player(current_player)
-    if current_player == player1
-      @current_player = player2
+  def switch_active_player(active_player)
+    if active_player == player1
+      @active_player = player2
     else
-      @current_player = player1
+      @active_player = player1
     end
   end
 
@@ -43,12 +42,7 @@ class Game
     puts "input invalid. Try again."
     player_turn(player)
   end
-
-  # def player_won?(player)
-  #   # code that checks if the player has won
-  #   if board.check_grid(player) == true
-  #   puts "player has won!"
-  # end
 end
 
 test = Game.new(Player.new('O'), Player.new('X'))
+test.play

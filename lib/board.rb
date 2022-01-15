@@ -9,21 +9,20 @@ class Board
     @grid.each do |row|
       puts row.join(' ')
     end
-    puts [*0..6].join(' ')
+    puts [*1..7].join(' ')
   end
 
   def space_available?(input)
-    return true if grid[0][input] == '-'
+    return true if grid[0][input -1] == '-'
 
     false
   end
 
   def update_grid(input, player)
-    puts "the input is #{input}"
     row = 5
-    row -= 1 until grid[row][input] == '-'
+    row -= 1 until grid[row][input - 1] == '-'
 
-    grid[row][input] = player.symbol
+    grid[row][input - 1] = player.symbol
   end
 
   def check_grid
