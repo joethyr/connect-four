@@ -18,22 +18,26 @@ class Board
     false
   end
 
-  def update_grid(input)
+  def update_grid(input, player)
+    puts "the input is #{input}"
     row = 5
     row -= 1 until grid[row][input] == '-'
 
-    grid[row][input] = 'o'
-
+    grid[row][input] = player.symbol
   end
 
   def check_grid
-
+    return true if four_in_row
   end
 
-  def check_vertical(row, column)
+  def four_in_row
+    grid.each do |row|
+      a = row.each_cons(4).find { |i| i.uniq.size == 1 && i.first != '-' }
+      return a.first unless a.nil?
+    end
+    nil
+  end
 
 end
 
 joe = Board.new
-joe.update_grid(1)
-joe.display_board
