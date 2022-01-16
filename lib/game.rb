@@ -18,7 +18,8 @@ class Game
       input = player_turn(active_player)
       board.update_grid(input, active_player)
       board.display_board
-      p board.horizontal_moves
+      p board.horizontal_moves(board.grid)
+      p board.vertical_moves
       switch_active_player(active_player)
       # player_won?(player)
     end

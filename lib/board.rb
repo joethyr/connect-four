@@ -24,10 +24,10 @@ class Board
   end
 
   def winning_moves(row, cell)
-    horizontal_moves ||
+    horizontal_moves
   end
 
-  def horizontal_moves
+  def horizontal_moves(grid)
     grid.each do |row|
       connected_row = row.each_cons(4).find { |a| a.uniq.length == 1 && a.first != '-' }
       return true unless connected_row.nil?
@@ -35,8 +35,10 @@ class Board
     nil
   end
 
+  def vertical_moves
+    horizontal_moves(grid.transpose)
+  end
 
 end
 
 joe = Board.new
-p joe.horizontal_moves
