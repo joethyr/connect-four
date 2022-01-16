@@ -13,9 +13,7 @@ class Board
   end
 
   def space_available?(input)
-    return true if grid[0][input -1] == '-'
-
-    false
+    grid[0][input - 1] == '-'
   end
 
   def update_grid(input, player)
@@ -25,18 +23,20 @@ class Board
     grid[row][input - 1] = player.symbol
   end
 
-  def check_grid
-    return true if four_in_row
+  def winning_moves(row, cell)
+    horizontal_moves ||
   end
 
-  def four_in_row
+  def horizontal_moves
     grid.each do |row|
-      a = row.each_cons(4).find { |i| i.uniq.size == 1 && i.first != '-' }
-      return a.first unless a.nil?
+      connected_row = row.each_cons(4).find { |a| a.uniq.length == 1 && a.first != '-' }
+      return true unless connected_row.nil?
     end
     nil
   end
 
+
 end
 
 joe = Board.new
+p joe.horizontal_moves
