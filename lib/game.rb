@@ -18,10 +18,17 @@ class Game
       input = player_turn(active_player)
       board.update_grid(input, active_player)
       board.display_board
-      p board.winning_moves
+      player_won?(active_player)
       switch_active_player(active_player)
       # player_won?(player)
     end
+  end
+
+  def player_won?(player)
+    return unless board.winning_moves == true
+
+    puts "Player #{player.symbol} has won the game!"
+    exit
   end
 
   def switch_active_player(active_player)

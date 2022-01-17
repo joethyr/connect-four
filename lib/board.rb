@@ -44,5 +44,4 @@ class Board
       (0..grid.size - k - 1).map { |i| grid[i][k + i] }
     end)
   end
-
 end
