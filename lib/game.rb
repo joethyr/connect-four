@@ -2,8 +2,7 @@ require_relative 'player'
 require_relative 'board'
 
 class Game
-  # attr_reader
-  attr_accessor :board, :player1, :player2, :game_over, :active_player
+  attr_accessor :board, :player1, :player2, :active_player
 
   def initialize(player1, player2)
     @player1 = player1
@@ -13,6 +12,7 @@ class Game
   end
 
   def play
+    introduction
     loop do
       input = player_turn(active_player)
       board.update_grid(input, active_player)
@@ -21,6 +21,11 @@ class Game
 
       switch_active_player(active_player)
     end
+  end
+
+  def introduction
+    print "Hello Player #{player1.symbol} and Player #{player2.symbol}. "
+    puts  "Lets play a game of Connect 4!"
   end
 
   def player_won?(player)
@@ -61,6 +66,3 @@ class Game
     player_turn(player)
   end
 end
-
-# test = Game.new(Player.new('O'), Player.new('X'))
-# test.play
