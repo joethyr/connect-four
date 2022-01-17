@@ -9,18 +9,17 @@ class Game
     @player1 = player1
     @player2 = player2
     @board = Board.new
-    @game_over = false
     @active_player = player1
   end
 
   def play
-    until game_over == true
+    loop do
       input = player_turn(active_player)
       board.update_grid(input, active_player)
       board.display_board
-      player_won?(active_player)
+      break if player_won?(active_player)
+
       switch_active_player(active_player)
-      # player_won?(player)
     end
   end
 
@@ -28,7 +27,18 @@ class Game
     return unless board.winning_moves == true
 
     puts "Player #{player.symbol} has won the game!"
-    exit
+    play_again?
+  end
+
+  def play_again?
+    puts "Would you like to play again? (y/n)\n> "
+    input = gets.chomp.downcase
+    return Game.new(Player.new('O'), Player.new('X')).play if input == 'y'
+
+    exit if input == 'n'
+
+    puts "incorrect input."
+    play_again?
   end
 
   def switch_active_player(active_player)
@@ -52,5 +62,5 @@ class Game
   end
 end
 
-test = Game.new(Player.new('O'), Player.new('X'))
-test.play
+# test = Game.new(Player.new('O'), Player.new('X'))
+# test.play
