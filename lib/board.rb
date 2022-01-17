@@ -23,11 +23,7 @@ class Board
     grid[row][input - 1] = player.symbol
   end
 
-  def winning_moves(row, cell)
-    horizontal_moves
-  end
-
-  def horizontal_moves(grid)
+  def four_in_row(grid)
     grid.each do |row|
       connected_row = row.each_cons(4).find { |a| a.uniq.length == 1 && a.first != '-' }
       return true unless connected_row.nil?
@@ -35,10 +31,18 @@ class Board
     nil
   end
 
-  def vertical_moves
-    horizontal_moves(grid.transpose)
+  def winning_moves
+    four_in_row(grid) ||
+    four_in_row(grid.transpose) ||
+    four_in_row(diagonals(grid))
+  end
+
+  def diagonals(grid)
+    (0..grid.size - 4).map do |i|
+      (0..grid.size - 1 - i).map { |k| grid[i + k][k] }
+    end.concat((1..grid.first.size - 4).map do |k|
+      (0..grid.size - k - 1).map { |i| grid[i][k + i] }
+    end)
   end
 
 end
-
-joe = Board.new
