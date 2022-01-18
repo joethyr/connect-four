@@ -10,10 +10,10 @@ The program runs a game of Connect Four on the command line where the player pla
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* Access program folder through the command line
+* Enter code below:
 ```
-code blocks for commands
+ruby lib/main.rb
 ```
 
 ## Sources
