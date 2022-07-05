@@ -13,6 +13,7 @@ class Game
 
   def play
     introduction
+    board.display_board
     loop do
       input = player_turn(active_player)
       board.update_grid(input, active_player)
