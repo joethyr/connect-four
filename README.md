@@ -1,4 +1,4 @@
-# TDD Connect Four
+# Connect Four
 
 Play a game of Connect Four.
 
