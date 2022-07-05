@@ -1,6 +1,6 @@
 # Connect Four
 
-Play a game of Connect Four.
+Play a game of Connect Four on the command line.
 
 ## Description
 
